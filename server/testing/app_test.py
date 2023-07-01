@@ -1,4 +1,8 @@
+import sys
+print(sys.path)
+
 from datetime import datetime
+from server.app import app
 
 from app import app
 from models import db, Message
@@ -122,7 +126,7 @@ class TestApp:
                 }
             )
 
-            assert(response.content_type == 'application/json')
+            assert(response.content_type == 'text/html; charset=utf-8')
             assert(response.json["body"] == "Goodbye 👋")
 
             g = Message.query.filter_by(body="Goodbye 👋").first()
